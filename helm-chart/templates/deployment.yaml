@@ -17,7 +17,7 @@ spec:
       serviceAccountName: nginx-sa
       containers:
         - name: nginx
-          image: us-central1-docker.pkg.dev/genuine-plate-417822/my-artifact-repo/docker-gc:v1
+          image: us-central1-docker.pkg.dev/genuine-plate-417822/my-artifact-repo/newimage:v2
           ports:
             - name: http
               containerPort: 80
