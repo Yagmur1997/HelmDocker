@@ -34,4 +34,4 @@ jobs:
 
     - name: Push Helm Charts to Artifact Registry
       run: |
-        helm push ./packaged-charts/*.tgz oci://us-central1-docker.pkg.dev/genuine-plate-417822/my-artifact-repo
+        helm push helm-chart-0.1.0.tgz oci://us-central1-docker.pkg.dev/genuine-plate-417822/my-artifact-repo
