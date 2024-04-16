@@ -24,7 +24,7 @@ jobs:
     
     - name: Package Helm Charts
       run: |
-        helm package helm-chart/
+        helm package helm-chart/ -d ./packaged-charts
 
     - name: Auth with Cloud
       uses: google-github-actions/auth@v2
