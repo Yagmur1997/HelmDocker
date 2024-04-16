@@ -7,6 +7,11 @@ on:
       - completed
   workflow_dispatch:
 
+env:
+    PROJECT_ID: genuine-plate-417822
+    REGISTRY_LOCATION: us-central1
+    REPOSITORY: my-artifact-repo
+
 jobs:
   package_and_push:
     name: Package and Push Helm Charts
