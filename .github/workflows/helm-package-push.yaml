@@ -25,6 +25,7 @@ jobs:
     - name: Package Helm Charts
       run: |
         helm package helm-chart/ -d ./packaged-charts
+      working-directory: ${{ github.workspace }}
 
     - name: Auth with Cloud
       uses: google-github-actions/auth@v2
@@ -32,6 +33,11 @@ jobs:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
         token_format: access_token
 
+    - name: Helm Login
+      run: 
+        gcloud auth print-access-token | helm registry login -u oauth2accesstoken \
+        --password-stdin https://us-central1-docker.pkg.dev
+
     - name: Push Helm Charts to Artifact Registry
       run: |
-        helm push ./packaged-charts/*.tgz oci://us-central1-docker.pkg.dev/genuine-plate-417822/my-artifact-repo
+        helm push ./packaged-charts/*.tgz "oci://us-central1-docker.pkg.dev/genuine-plate-417822/my-artifact-repo"
